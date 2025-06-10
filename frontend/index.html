@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Job Application Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<div class="container">
+  <h1>Job Application Tracker</h1>
+
+  <button id="toggleDarkMode">🌙 Dark Mode</button>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search by company or position" oninput="filterJobs()" autocomplete="off" />
+  </div>
+
+  <div id="job-list" class="job-list"></div>
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
