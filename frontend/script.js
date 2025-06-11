@@ -1,4 +1,5 @@
-const BACKEND_URL = "http://localhost:5000/api/jobs";
+// ✅ Set this to your actual deployed backend URL
+const BACKEND_URL = "https://your-backend-url.onrender.com/api/jobs"; // CHANGE THIS
 
 async function fetchJobs() {
   try {
@@ -73,28 +74,6 @@ async function deleteJob(id) {
 }
 
 function filterJobs() {
-  const input = document.getElementById("searchInput").value.toLowerCase();
-  const cards = document.querySelectorAll(".job-card");
-
-  cards.forEach(card => {
-    const content = card.textContent.toLowerCase();
-    card.style.display = content.includes(input) ? "block" : "none";
-  });
-}
-
-window.onload = fetchJobs;
-window.onload = () => {
-  fetchJobs();
-  document.getElementById("searchInput").value = ""; // clear search field on load
-};
-
-
-window.onload = () => {
-  fetchJobs();
-  document.getElementById("searchInput").value = ""; // clear search input on page load
-};
-
-function filterJobs() {
   const query = document.getElementById("searchInput").value.toLowerCase();
   const cards = document.querySelectorAll(".job-card");
 
@@ -103,33 +82,10 @@ function filterJobs() {
     card.style.display = text.includes(query) ? "block" : "none";
   });
 }
-
-window.onload = () => {
-  fetchJobs();
-  document.getElementById("searchInput").value = "";
-};
-
-function filterJobs() {
-  const query = document.getElementById("searchInput").value.toLowerCase();
-  const cards = document.querySelectorAll(".job-card");
-
-  cards.forEach(card => {
-    const text = card.innerText.toLowerCase();
-    card.style.display = text.includes(query) ? "block" : "none";
-  });
-}
-
-// On page load
-window.onload = () => {
-  fetchJobs();
-  document.getElementById("searchInput").value = "";
-  setupDarkModeToggle();
-};
 
 function setupDarkModeToggle() {
   const toggle = document.getElementById("toggleDarkMode");
 
-  // Check saved preference
   if (localStorage.getItem("darkMode") === "true") {
     document.body.classList.add("dark");
   }
@@ -140,3 +96,10 @@ function setupDarkModeToggle() {
     localStorage.setItem("darkMode", isDark);
   });
 }
+
+// ✅ Only one onload handler
+window.onload = () => {
+  fetchJobs();
+  setupDarkModeToggle();
+  document.getElementById("searchInput").value = "";
+};
